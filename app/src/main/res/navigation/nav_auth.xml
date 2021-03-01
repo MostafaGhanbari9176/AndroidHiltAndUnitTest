@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragmentLogIn">
+
+    <fragment
+        android:id="@+id/fragmentLogIn"
+        android:name="ir.mostafaghanbari.testdi.ui.auth.FragmentLogIn"
+        android:label="FragmentLogIn">
+        <action
+            android:id="@+id/actionLogUp"
+            app:destination="@id/fragmentLogUp" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLogUp"
+        android:name="ir.mostafaghanbari.testdi.ui.auth.FragmentLogUp"
+        android:label="FragmentLogUp">
+        <action
+            android:id="@+id/actionLogIn"
+            app:destination="@id/fragmentLogIn" />
+    </fragment>
+</navigation>

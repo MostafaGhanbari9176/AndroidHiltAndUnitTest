@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragmentMain">
+
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name="ir.mostafaghanbari.testdi.ui.main.FragmentMain"
+        android:label="FragmentMain">
+        <action
+            android:id="@+id/actionDetail"
+            app:destination="@id/fragmentDetail" />
+        <action
+            android:id="@+id/actionAdd"
+            app:destination="@id/fragmentAdd" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAdd"
+        android:name="ir.mostafaghanbari.testdi.ui.main.FragmentAdd"
+        android:label="FragmentAdd" />
+    <fragment
+        android:id="@+id/fragmentDetail"
+        android:name="ir.mostafaghanbari.testdi.ui.main.FragmentDetail"
+        android:label="FragmentDetail" />
+</navigation>
