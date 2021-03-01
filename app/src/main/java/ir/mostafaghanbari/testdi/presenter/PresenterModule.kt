@@ -14,7 +14,7 @@ import ir.mostafaghanbari.testdi.model.*
 /**
  * ## Hilt Module For How Providing Instance
  *
- * ###The information Hilt has about how to provide instances of different types are also called bindings
+ * ### The information Hilt has about how to provide instances of different types are also called bindings
  *
  * InstallIn annotation tel hilt which HiltComponent can access to this module dependencies
  */
@@ -30,7 +30,7 @@ object PresenterModule {
      * @return implementation of [PresenterCallBack] in [fragment]
      */
     @Provides
-    fun bindPresenterCallBack(fragment: Fragment): PresenterCallBack =
+    fun providePresenterCallBack(fragment: Fragment): PresenterCallBack =
         fragment as PresenterCallBack
 
     /**
