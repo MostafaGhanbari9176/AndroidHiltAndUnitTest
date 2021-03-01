@@ -8,28 +8,25 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
-import ir.mostafaghanbari.testdi.model.RoomDB
-import ir.mostafaghanbari.testdi.model.User
-import ir.mostafaghanbari.testdi.model.UsersDao
-import javax.inject.Singleton
+import ir.mostafaghanbari.testdi.model.*
 
 /**
  * ## Hilt Module For Providing CallBack Interfaces
  */
 @Module
 @InstallIn(FragmentComponent::class)
-object ModulePresenter {
+object PresenterModule {
 
     /**
-     * inject [AuthCallBack] to [AuthPresenter] instance
-     * on every fragments that implemented [AuthCallBack] and need [AuthPresenter] instance
+     * inject [PresenterCallBack] to [AuthPresenter] instance
+     * on every fragments that implemented [PresenterCallBack] and need [AuthPresenter] instance
      *
-     * @param [fragment] fragment that implemented [AuthCallBack]
-     * @return implementation of [AuthCallBack] in [fragment]
+     * @param [fragment] fragment that implemented [PresenterCallBack]
+     * @return implementation of [PresenterCallBack] in [fragment]
      */
     @Provides
-    fun bindAuthCallBack(fragment: Fragment): AuthCallBack =
-        fragment as AuthCallBack
+    fun bindPresenterCallBack(fragment: Fragment): PresenterCallBack =
+        fragment as PresenterCallBack
 
     /**
      * its provide [RoomDB] instance every where need to inject [RoomDB]
@@ -58,5 +55,13 @@ object ModulePresenter {
 
     @Provides
     fun provideUser():User = User()
+
+    @Provides
+    fun providePostsDao(db:RoomDB):PostsDao{
+        return db.postsDao()
+    }
+
+    @Provides
+    fun providePost(): Post = Post()
 
 }

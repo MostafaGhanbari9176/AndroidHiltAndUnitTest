@@ -11,13 +11,13 @@ import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.qualifiers.ActivityContext
 import ir.mostafaghanbari.testdi.R
-import ir.mostafaghanbari.testdi.presenter.AuthCallBack
+import ir.mostafaghanbari.testdi.presenter.PresenterCallBack
 import ir.mostafaghanbari.testdi.presenter.AuthPresenter
 import kotlinx.android.synthetic.main.fragment_logup.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FragmentLogUp : Fragment(), AuthCallBack {
+class FragmentLogUp : Fragment(), PresenterCallBack {
 
     @Inject
     lateinit var authPresenter: AuthPresenter

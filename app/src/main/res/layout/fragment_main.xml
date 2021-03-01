@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layoutDirection="ltr"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/txtEmptyMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Empty"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RVMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/btnCreatePost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Create New Post"/>
+
+</LinearLayout>

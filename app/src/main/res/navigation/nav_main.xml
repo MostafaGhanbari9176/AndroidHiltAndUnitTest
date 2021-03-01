@@ -18,7 +18,11 @@
     <fragment
         android:id="@+id/fragmentAdd"
         android:name="ir.mostafaghanbari.testdi.ui.main.FragmentAdd"
-        android:label="FragmentAdd" />
+        android:label="FragmentAdd" >
+        <action
+            android:id="@+id/actionList"
+            app:destination="@id/fragmentMain" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentDetail"
         android:name="ir.mostafaghanbari.testdi.ui.main.FragmentDetail"

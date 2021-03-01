@@ -8,14 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
-import dagger.hilt.DefineComponent
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.qualifiers.ApplicationContext
 import ir.mostafaghanbari.testdi.R
-import ir.mostafaghanbari.testdi.presenter.AuthCallBack
+import ir.mostafaghanbari.testdi.presenter.PresenterCallBack
 import ir.mostafaghanbari.testdi.presenter.AuthPresenter
 import ir.mostafaghanbari.testdi.ui.main.ActivityMain
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -25,7 +22,7 @@ import javax.inject.Inject
  * ## LogIn Form
  */
 @AndroidEntryPoint
-class FragmentLogIn : Fragment(), AuthCallBack {
+class FragmentLogIn : Fragment(), PresenterCallBack {
 
     @Inject lateinit var authPresenter:AuthPresenter
 

@@ -1,9 +1,6 @@
 package ir.mostafaghanbari.testdi.model
 
-import androidx.room.Dao
-import androidx.room.Entity
-import androidx.room.Insert
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 /**
  * ## Post Entity
@@ -16,15 +13,18 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Posts")
 data class Post(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val username: String,
-    val title: String,
-    val message: String
+    var username: String = "",
+    var title: String = "",
+    var message: String = ""
 )
 
 @Dao
 interface PostsDao{
 
     @Insert
-    fun insert(post:Post)
+    fun insert(post:Post):Long
+
+    @Query("select * from Posts")
+    fun posts():List<Post>
 
 }

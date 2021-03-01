@@ -2,10 +2,8 @@ package ir.mostafaghanbari.testdi.presenter
 
 import ir.mostafaghanbari.testdi.model.User
 import ir.mostafaghanbari.testdi.model.UsersDao
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
@@ -29,35 +27,35 @@ class AuthPresenterTest {
             .thenReturn(true)
 
         //check for invalid username
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(!ok)
             }
         }, usersDao, User()).logIn("12345", "mos123")
 
         //check for invalid pass
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(!ok)
             }
         }, usersDao, User()).logIn("mostafa", "mos123")
 
         //check for empty username
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(!ok)
             }
         }, usersDao, User()).logIn("", "1234")
 
         //check for short pass
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(!ok)
             }
         }, usersDao, User()).logIn("mostafa", "12")
 
         //check for correct data
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(ok)
             }
@@ -71,35 +69,35 @@ class AuthPresenterTest {
             .thenReturn(false)
 
         //check for invalid username
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(!ok)
             }
         }, usersDao, User()).logUp("12345", "mos123")
 
         //check for invalid pass
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(!ok)
             }
         }, usersDao, User()).logUp("mostafa", "mos123")
 
         //check for empty username
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(!ok)
             }
         }, usersDao, User()).logUp("", "1234")
 
         //check for short pass
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(!ok)
             }
         }, usersDao, User()).logUp("mostafa", "12")
 
         //check for correct data
-        AuthPresenter(object : AuthCallBack {
+        AuthPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(ok)
             }

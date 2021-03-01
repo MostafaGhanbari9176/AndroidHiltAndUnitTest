@@ -6,7 +6,7 @@ import ir.mostafaghanbari.testdi.model.UsersDao
 import javax.inject.Inject
 
 class AuthPresenter @Inject constructor(
-    private val callBack: AuthCallBack,
+    private val callBack: PresenterCallBack,
     private val usersDao: UsersDao,
     private val user: User
 ) {
