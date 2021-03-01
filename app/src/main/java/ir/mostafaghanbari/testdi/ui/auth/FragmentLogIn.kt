@@ -20,15 +20,30 @@ import javax.inject.Inject
 
 /**
  * ## LogIn Form
+ *
+ * with AndroidEntryPoint annotation hilt can provide this dependencies in fact
+ * this annotation create a dagger component of required dependencies and then
+ * we using Inject annotation on field deceleration for injecting dependencies
  */
 @AndroidEntryPoint
 class FragmentLogIn : Fragment(), PresenterCallBack {
 
+    /**
+     * using Inject annotation for injecting this dependency
+     */
     @Inject lateinit var authPresenter:AuthPresenter
 
+
+    /**
+     * ApplicationContext is a hilt default binding
+     */
     @ApplicationContext
     @Inject
     lateinit var ctx:Context
+
+    companion object{
+        private lateinit var username:String
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,6 +78,8 @@ class FragmentLogIn : Fragment(), PresenterCallBack {
         val name = txtUserName.text.toString()
         val pass = txtPassword.text.toString()
 
+        username = name
+
         authPresenter.logIn(name, pass)
     }
 
@@ -74,6 +91,7 @@ class FragmentLogIn : Fragment(), PresenterCallBack {
 
     private fun showMainPage() {
         val intent = Intent(ctx, ActivityMain::class.java)
+        intent.putExtra("username", username)
         startActivity(intent)
     }
 

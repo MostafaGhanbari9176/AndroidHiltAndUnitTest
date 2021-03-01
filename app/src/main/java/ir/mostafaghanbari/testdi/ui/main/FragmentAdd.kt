@@ -16,12 +16,25 @@ import ir.mostafaghanbari.testdi.presenter.PresenterCallBack
 import kotlinx.android.synthetic.main.fragment_add_post.*
 import javax.inject.Inject
 
+/**
+ * ## Add New Post Form
+ *
+ * with AndroidEntryPoint annotation hilt can provide this dependencies in fact
+ * this annotation create a dagger component of required dependencies and then
+ * we using Inject annotation on field deceleration for injecting dependencies
+ */
 @AndroidEntryPoint
 class FragmentAdd : Fragment(), PresenterCallBack {
 
+    /**
+     * using Inject annotation for injecting this dependency
+     */
     @Inject
     lateinit var postPresenter: PostPresenter
 
+    /**
+     * ActivityContext is a hilt default binding
+     */
     @Inject
     @ActivityContext
     lateinit var ctx: Context
@@ -48,8 +61,9 @@ class FragmentAdd : Fragment(), PresenterCallBack {
     private fun addPost() {
         val title = edtPostTitle.text.toString()
         val message = edtPostMessage.text.toString()
+        val username = (ctx as ActivityMain).username
 
-        postPresenter.createPost(title, message)
+        postPresenter.createPost(title, message, username)
     }
 
     override fun result(ok: Boolean, message: String) {

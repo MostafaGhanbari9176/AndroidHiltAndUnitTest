@@ -7,6 +7,8 @@ import ir.mostafaghanbari.testdi.R
 
 /**
  * ## Host Of [FragmentLogIn] And [FragmentLogUp]
+ *
+ * we using AndroidEntryPoint annotation because child fragment used this annotation
  */
 @AndroidEntryPoint
 class ActivityAuth:AppCompatActivity() {

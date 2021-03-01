@@ -43,17 +43,6 @@ class UsersDaoTest {
         assert(usersDao.exist(user.name, user.pass))
     }
 
-    @Test
-    fun duplicatedPrimaryKey(){
-        val user = User("mostafa", "123456")
-
-        val result1 = usersDao.insert(user)
-        val result2 = usersDao.insert(user)
-
-        Assert.assertEquals(result1, 1)
-        Assert.assertEquals(result2, 0)
-    }
-
     @After
     fun closeDb() {
         db.close()

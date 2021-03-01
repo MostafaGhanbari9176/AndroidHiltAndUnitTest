@@ -6,12 +6,17 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import ir.mostafaghanbari.testdi.model.*
 
 /**
- * ## Hilt Module For Providing CallBack Interfaces
+ * ## Hilt Module For How Providing Instance
+ *
+ * ###The information Hilt has about how to provide instances of different types are also called bindings
+ *
+ * InstallIn annotation tel hilt which HiltComponent can access to this module dependencies
  */
 @Module
 @InstallIn(FragmentComponent::class)
@@ -31,9 +36,9 @@ object PresenterModule {
     /**
      * its provide [RoomDB] instance every where need to inject [RoomDB]
      *
-     * @param [ctx] application context from hilt default qualifiers
+     * @param [ctx]
      *
-     * Singleton annotation tells Hilt that instance should be created only once
+     * ApplicationContext is a hilt default binding
      */
     @Provides
     fun provideDB(@ApplicationContext ctx: Context): RoomDB {
@@ -53,6 +58,9 @@ object PresenterModule {
         return db.usersDao()
     }
 
+    /**
+     * its provide [User] instance
+     */
     @Provides
     fun provideUser():User = User()
 

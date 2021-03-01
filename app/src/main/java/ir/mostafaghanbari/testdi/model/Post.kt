@@ -21,9 +21,17 @@ data class Post(
 @Dao
 interface PostsDao{
 
+    /**
+     * add new post to database
+     *
+     * @param[post] new post
+     */
     @Insert
     fun insert(post:Post):Long
 
+    /**
+     * @return list of all posts
+     */
     @Query("select * from Posts")
     fun posts():List<Post>
 

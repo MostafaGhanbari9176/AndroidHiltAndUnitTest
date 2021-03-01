@@ -7,9 +7,13 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
+/**
+ * local unit test for checking [PostPresenter] functionality
+ */
 @RunWith(MockitoJUnitRunner::class)
 class PostPresenterTest {
 
+    //mocking postsDao functionality to test presenter independent of database functionality
     @Mock
     private lateinit var postsDao: PostsDao
 
@@ -21,14 +25,14 @@ class PostPresenterTest {
             override fun result(ok: Boolean, message: String) {
                 assert(!ok)
             }
-        }, postsDao, Post()).createPost("", "")
+        }, postsDao, Post()).createPost("", "", "")
 
         //check valid inputs
         PostPresenter(object : PresenterCallBack {
             override fun result(ok: Boolean, message: String) {
                 assert(ok)
             }
-        }, postsDao, Post()).createPost("title", "message")
+        }, postsDao, Post()).createPost("title", "message", "mostafa")
     }
 
 }

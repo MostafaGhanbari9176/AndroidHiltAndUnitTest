@@ -6,18 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
 import ir.mostafaghanbari.testdi.R
 import ir.mostafaghanbari.testdi.model.Post
 import kotlinx.android.synthetic.main.item_post.view.*
 import javax.inject.Inject
 
 class AdapterMain(
-    private val data: List<Post>
+    private val data: List<Post>,
+    private val ctx:Context
 ) : RecyclerView.Adapter<AdapterMain.MyHolder>() {
-
-    @ActivityContext
-    @Inject
-    lateinit var ctx: Context
 
     class MyHolder(v: View) : RecyclerView.ViewHolder(v)
 

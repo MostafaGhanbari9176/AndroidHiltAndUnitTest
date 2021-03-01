@@ -17,14 +17,27 @@ import ir.mostafaghanbari.testdi.presenter.PresenterCallBack
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 
+/**
+ * ## List Of All Posts
+ *
+ * with AndroidEntryPoint annotation hilt can provide this dependencies in fact
+ * this annotation create a dagger component of required dependencies and then
+ * we using Inject annotation on field deceleration for injecting dependencies
+ */
 @AndroidEntryPoint
 class FragmentMain : Fragment(), PresenterCallBack {
 
+    /**
+     * using Inject annotation for injecting this dependency
+     */
     @Inject
     lateinit var postPresenter: PostPresenter
 
-    @ActivityContext
+    /**
+     * ActivityContext is a hilt default binding
+     */
     @Inject
+    @ActivityContext
     lateinit var ctx: Context
 
     override fun onCreateView(
@@ -56,7 +69,7 @@ class FragmentMain : Fragment(), PresenterCallBack {
 
     private fun setUpList(data: List<Post>) {
         RVMain.apply {
-            adapter = AdapterMain(data)
+            adapter = AdapterMain(data, ctx)
             layoutManager = LinearLayoutManager(ctx)
         }
     }

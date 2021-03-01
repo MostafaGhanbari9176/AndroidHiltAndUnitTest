@@ -10,6 +10,13 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * ## Test DB Functionality On Android Device
+ *
+ * recommended testing db on device instead of local machine
+ * because the version of SQLite running on your device—and your users' devices—might
+ * not match the version on your local machine
+ */
 @RunWith(AndroidJUnit4::class)
 class PostDaoTest {
 
@@ -19,8 +26,8 @@ class PostDaoTest {
     @Before
     fun createDB() {
         val ctx = ApplicationProvider.getApplicationContext<Context>()
+        //create temporary db
         db = Room.inMemoryDatabaseBuilder(ctx, RoomDB::class.java).build()
-
         postsDao = db.postsDao()
     }
 
@@ -32,10 +39,13 @@ class PostDaoTest {
             message = "message"
         )
 
+        //insert post to db
         postsDao.insert(post)
 
+        //fetch posts from db
         val posts = postsDao.posts()
 
+        //checking inserted data with fetched data
         Assert.assertEquals(posts.size, 1)
         Assert.assertEquals(posts[0].username, "mostafa")
         Assert.assertEquals(posts[0].title, "title")

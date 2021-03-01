@@ -5,12 +5,28 @@ import ir.mostafaghanbari.testdi.model.User
 import ir.mostafaghanbari.testdi.model.UsersDao
 import javax.inject.Inject
 
+/**
+ *## Functionality Of Authentication
+ *
+ * using Inject annotation for telling hilt how provide instance of this and
+ * what this dependencies
+ *
+ * @param [callBack] delivering result to view
+ * @param [usersDao]
+ * @param [user]
+ */
 class AuthPresenter @Inject constructor(
     private val callBack: PresenterCallBack,
     private val usersDao: UsersDao,
     private val user: User
 ) {
 
+    /**
+     * ### LogIn
+     *
+     * @param [name] username
+     * @param [pass] user password
+     */
     fun logIn(name: String, pass: String) {
         val validate = validate(name, pass)
 
@@ -24,6 +40,12 @@ class AuthPresenter @Inject constructor(
         }
     }
 
+    /**
+     * ### LogUp
+     *
+     * @param [name] username
+     * @param [pass] user password
+     */
     fun logUp(name: String, pass: String) {
         val validate = validate(name, pass)
 
